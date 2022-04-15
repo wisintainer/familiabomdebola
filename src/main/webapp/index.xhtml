@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="#{layoutMB.template}">
+
+	<ui:define name="head-end">
+		<ui:param name="renderBreadCrumb" value="false" />
+	</ui:define>
+
+	<ui:define name="title">
+		<p:commandButton update="tbl_times" value="Atualizar Dados"
+			action="#{apiMB.informacoesLiga}" />
+
+		<p:dataTable id="tbl_times" var="time" value="#{apiMB.times}">
+
+			<p:column style="width: 2%; align-text: center;">
+				<p:outputLabel value="#{time.ranking.campeonato}" />
+			</p:column>
+
+			<p:column style="width: 15%; align-text: center;"
+				headerText="Cartoleiro">
+				<img width="60" height="60" src="#{time.url_escudo_png}" />
+				<p:outputLabel value=" #{time.nome} ( #{time.nome_cartola} )" />
+			</p:column>
+
+			<p:column style="width: 5%; align-text: center;" headerText="Pontos">
+				<p:outputLabel value="#{time.pontos.campeonato}" />
+			</p:column>
+
+			<p:column style="width: 5%; align-text: center;"
+				headerText="Cartoletas">
+				<p:outputLabel value="#{time.patrimonio}" />
+			</p:column>
+
+			<p:column style="width: 5%; align-text: center;" headerText="Saldo">
+				<p:outputLabel value="R$: #{time.saldo}" />
+			</p:column>
+
+			<p:column style="width: 30%; align-text: center;" headerText="Premiações">
+				<p:outputLabel value="#{time.premiacoes}" />
+			</p:column>
+		</p:dataTable>
+
+	</ui:define>
+
+
+</ui:composition>
