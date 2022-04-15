@@ -1,1 +1,1 @@
-web: java -jar target/bomdebola.war
+web: java -jar target/InfinityBank-0.0.1-SNAPSHOT.jar
