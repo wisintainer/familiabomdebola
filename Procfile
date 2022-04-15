@@ -1,1 +1,1 @@
-web: java -jar target/bomdebola.jar
+web: java -jar target/bomdebola.war
