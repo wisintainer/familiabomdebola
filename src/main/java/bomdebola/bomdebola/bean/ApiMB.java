@@ -29,6 +29,7 @@ public class ApiMB implements Serializable {
 	private List<Time> times;
 	private Liga liga;
 	private Status status;
+	private String titulo;
 
 	@PostConstruct
 	public void init() throws Exception {
@@ -51,17 +52,23 @@ public class ApiMB implements Serializable {
 		api = new Api();
 		this.setStatus(api.status());
 
-		liga = api.buscarInformacoesLiga("familia-bom-de-bola-tj").getLiga();
-		times = api.buscarInformacoesLiga("familia-bom-de-bola-tj").getTimes();
+		// status 3 = mercado em manutenção
+		if (this.getStatus().getStatus_mercado() == 3) {
+			this.setTitulo("MANUTENÇÃO");
+		} else {
+			this.setTitulo("Familia Bom de Bola");
+			liga = api.buscarInformacoesLiga("familia-bom-de-bola-tj").getLiga();
+			times = api.buscarInformacoesLiga("familia-bom-de-bola-tj").getTimes();
 
-		times = api.classificacaogeral(times);
-		times = api.campeaoPrimeiroTurno(times, getStatus());
-		times = api.campeaoSegundoTurno(times, getStatus());
-		times = api.maisRico(times);
-		times = api.vencedoresRodadas(times);
-		times = api.maiorMitada(times, getStatus());
-		
-		times = api.acertaSaldo(times);
+			times = api.classificacaogeral(times);
+			times = api.campeaoPrimeiroTurno(times, getStatus());
+			times = api.campeaoSegundoTurno(times, getStatus());
+			times = api.maisRico(times);
+			times = api.vencedoresRodadas(times, status);
+			times = api.maiorMitada(times, getStatus());
+
+			times = api.acertaSaldo(times);
+		}
 
 	}
 
@@ -87,6 +94,14 @@ public class ApiMB implements Serializable {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 }

@@ -83,8 +83,7 @@ public class Api {
 			HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
 
 			conexao.setRequestProperty("User-Agent", "PostmanRuntime/7.26.2");
-			conexao.setRequestProperty("X-GLB-Token",
-					"1635b5b4c84a278b8efc41b9e51952603427a64645565526c6341532d377856587177506c4274315f4e6f684156785a5569756d616d55386e56474b4f4c4256442d79784b774f4a37555633614a582d564c303934727450346278774c6266694d7367437173413d3d3a303a776973696e7461696e65725f323031345f35");
+			conexao.setRequestProperty("X-GLB-Token", ParametrosEnum.TOKEN.getValor());
 
 			if (conexao.getResponseCode() != codigoSucesso) {
 				throw new RuntimeException("HTTP error code : " + conexao.getResponseCode());
@@ -265,7 +264,7 @@ public class Api {
 		}
 	}
 
-	public List<Time> vencedoresRodadas(List<Time> times) throws Exception {
+	public List<Time> vencedoresRodadas(List<Time> times, Status status) throws Exception {
 //-----------------------------------------------------------------------------------------------------
 		Time vencedorRodada1 = new Time();
 		vencedorRodada1.setPontosPorRodada(0.0);
@@ -282,6 +281,26 @@ public class Api {
 		for (Time time : times) {
 			if (time.getSlug().equals(vencedorRodada1.getSlug())) {
 				time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_1);
+			}
+		}
+
+		if (status.getRodada_atual() > 2) {
+			Time vencedorRodada2 = new Time();
+			vencedorRodada2.setPontosPorRodada(0.0);
+
+			for (Time time : times) {
+				Time timeParaComparar = new Time();
+				timeParaComparar.setPontosPorRodada(pontosPorRodada(time, 2));
+				if (timeParaComparar.getPontosPorRodada() > vencedorRodada2.getPontosPorRodada()) {
+					vencedorRodada2 = time;
+					vencedorRodada2.setPontosPorRodada(timeParaComparar.getPontosPorRodada());
+				}
+			}
+
+			for (Time time : times) {
+				if (time.getSlug().equals(vencedorRodada2.getSlug())) {
+					time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_2);
+				}
 			}
 		}
 
