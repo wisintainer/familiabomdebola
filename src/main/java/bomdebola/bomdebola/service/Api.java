@@ -266,6 +266,7 @@ public class Api {
 	}
 
 	public List<Time> vencedoresRodadas(List<Time> times) throws Exception {
+//-----------------------------------------------------------------------------------------------------
 		Time vencedorRodada1 = new Time();
 		vencedorRodada1.setPontosPorRodada(0.0);
 
@@ -283,8 +284,26 @@ public class Api {
 				time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_1);
 			}
 		}
-		
 
+		return times;
+	}
+
+	public List<Time> maiorMitada(List<Time> times, Status status) throws Exception {
+		Time timeMaiorMitada = new Time();
+		timeMaiorMitada.setPontosPorRodada(0.0);
+		for (int i = 1; i <= status.getRodada_atual(); i++) {
+			for (Time time : times) {
+				if (pontosPorRodada(time, i) > timeMaiorMitada.getPontosPorRodada()) {
+					timeMaiorMitada = time;
+				}
+			}
+		}
+
+		for (Time time : times) {
+			if (time.getSlug().equals(timeMaiorMitada.getSlug())) {
+				time.getPremiacoes().add(PremiacoesEnum.MAIOR_MITADA);
+			}
+		}
 		return times;
 	}
 

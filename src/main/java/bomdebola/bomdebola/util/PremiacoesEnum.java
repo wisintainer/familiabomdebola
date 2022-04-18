@@ -79,7 +79,7 @@ public enum PremiacoesEnum {
 	
 	@Override
 	public String toString() {
-		return getDescricao();
+		return getDescricao() + "\n";
 	}
 	
 	

@@ -8,40 +8,61 @@
 		<ui:param name="renderBreadCrumb" value="false" />
 	</ui:define>
 
+
+
+
+
+
+
+
+
 	<ui:define name="title">
-		<p:commandButton update="tbl_times" value="Atualizar Dados"
-			action="#{apiMB.informacoesLiga}" />
 
-		<p:dataTable id="tbl_times" var="time" value="#{apiMB.times}">
+		<p:repeat var="time" value="#{apiMB.times}">
+			<div style="border-style: solid;">
+				<div class="ui-g">
+					<div class="ui-g-1">#{time.ranking.campeonato}</div>
+					<div class="ui-g-2">
+						<img width="60" height="60" src="#{time.url_escudo_png}" />
+					</div>
+					<div
+						style="font-size: 16px; margin: 0; top: 0%; -ms-transform: translateY(22%); transform: translateY(22%);"
+						class="ui-g-9">#{time.nome} ( #{time.nome_cartola} )</div>
 
-			<p:column style="width: 2%; align-text: center;">
-				<p:outputLabel value="#{time.ranking.campeonato}" />
-			</p:column>
+				</div>
+				<div class="ui-g">
+					<div style="font-size: 16px;" class="ui-g-3"></div>
+					<div style="font-size: 16px;" class="ui-g-3">Pontos:</div>
+					<div style="font-size: 16px;" class="ui-g-3">#{time.pontos.campeonato}</div>
+				</div>
 
-			<p:column style="width: 15%; align-text: center;"
-				headerText="Cartoleiro">
-				<img width="60" height="60" src="#{time.url_escudo_png}" />
-				<p:outputLabel value=" #{time.nome} ( #{time.nome_cartola} )" />
-			</p:column>
+				<div class="ui-g">
+					<div style="font-size: 16px;" class="ui-g-3"></div>
+					<div style="font-size: 16px;" class="ui-g-3">Cartoletas:</div>
+					<div style="font-size: 16px;" class="ui-g-3">#{time.patrimonio}</div>
+				</div>
 
-			<p:column style="width: 5%; align-text: center;" headerText="Pontos">
-				<p:outputLabel value="#{time.pontos.campeonato}" />
-			</p:column>
+				<div class="ui-g">
+					<div style="font-size: 16px;" class="ui-g-3"></div>
+					<div style="font-size: 16px;" class="ui-g-3">Saldo:</div>
+					<div style="font-size: 16px;" class="ui-g-3">R$:
+						#{time.saldo}</div>
+				</div>
 
-			<p:column style="width: 5%; align-text: center;"
-				headerText="Cartoletas">
-				<p:outputLabel value="#{time.patrimonio}" />
-			</p:column>
+				<div class="ui-g">
+					<div style="font-size: 16px;" class="ui-g-3">Conquistas:</div>
+					<div style="font-size: 16px;" class="ui-g-9">#{time.premiacoes}</div>
+				</div>
+			</div>
+		</p:repeat>
 
-			<p:column style="width: 5%; align-text: center;" headerText="Saldo">
-				<p:outputLabel value="R$: #{time.saldo}" />
-			</p:column>
 
-			<p:column style="width: 30%; align-text: center;" headerText="Premiações">
-				<p:outputLabel value="#{time.premiacoes}" />
-			</p:column>
-		</p:dataTable>
 
+
+
+
+
+		
 	</ui:define>
 
 

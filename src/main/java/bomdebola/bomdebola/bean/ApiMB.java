@@ -59,6 +59,7 @@ public class ApiMB implements Serializable {
 		times = api.campeaoSegundoTurno(times, getStatus());
 		times = api.maisRico(times);
 		times = api.vencedoresRodadas(times);
+		times = api.maiorMitada(times, getStatus());
 		
 		times = api.acertaSaldo(times);
 
