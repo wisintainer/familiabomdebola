@@ -269,21 +269,6 @@ public class Api {
 		Time vencedorRodada1 = new Time();
 		vencedorRodada1.setPontosPorRodada(0.0);
 
-//		for (Time time : times) {
-//			Time timeParaComparar = new Time();
-//			timeParaComparar.setPontosPorRodada(pontosPorRodada(time, 1));
-//			if (timeParaComparar.getPontosPorRodada() > vencedorRodada1.getPontosPorRodada()) {
-//				vencedorRodada1 = time;
-//				vencedorRodada1.setPontosPorRodada(timeParaComparar.getPontosPorRodada());
-//			}
-//		}
-//
-//		for (Time time : times) {
-//			if (time.getSlug().equals(vencedorRodada1.getSlug())) {
-//				time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_1);
-//			}
-//		}
-
 		for (int i = 1; i <= 38; i++) {
 			if (status.getRodada_atual() > i) {
 				Time vencedorRodada = new Time();
