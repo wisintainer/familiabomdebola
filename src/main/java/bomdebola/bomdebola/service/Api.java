@@ -269,37 +269,152 @@ public class Api {
 		Time vencedorRodada1 = new Time();
 		vencedorRodada1.setPontosPorRodada(0.0);
 
-		for (Time time : times) {
-			Time timeParaComparar = new Time();
-			timeParaComparar.setPontosPorRodada(pontosPorRodada(time, 1));
-			if (timeParaComparar.getPontosPorRodada() > vencedorRodada1.getPontosPorRodada()) {
-				vencedorRodada1 = time;
-				vencedorRodada1.setPontosPorRodada(timeParaComparar.getPontosPorRodada());
-			}
-		}
+//		for (Time time : times) {
+//			Time timeParaComparar = new Time();
+//			timeParaComparar.setPontosPorRodada(pontosPorRodada(time, 1));
+//			if (timeParaComparar.getPontosPorRodada() > vencedorRodada1.getPontosPorRodada()) {
+//				vencedorRodada1 = time;
+//				vencedorRodada1.setPontosPorRodada(timeParaComparar.getPontosPorRodada());
+//			}
+//		}
+//
+//		for (Time time : times) {
+//			if (time.getSlug().equals(vencedorRodada1.getSlug())) {
+//				time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_1);
+//			}
+//		}
 
-		for (Time time : times) {
-			if (time.getSlug().equals(vencedorRodada1.getSlug())) {
-				time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_1);
-			}
-		}
+		for (int i = 1; i <= 38; i++) {
+			if (status.getRodada_atual() > i) {
+				Time vencedorRodada = new Time();
+				vencedorRodada.setPontosPorRodada(0.0);
 
-		if (status.getRodada_atual() > 2) {
-			Time vencedorRodada2 = new Time();
-			vencedorRodada2.setPontosPorRodada(0.0);
-
-			for (Time time : times) {
-				Time timeParaComparar = new Time();
-				timeParaComparar.setPontosPorRodada(pontosPorRodada(time, 2));
-				if (timeParaComparar.getPontosPorRodada() > vencedorRodada2.getPontosPorRodada()) {
-					vencedorRodada2 = time;
-					vencedorRodada2.setPontosPorRodada(timeParaComparar.getPontosPorRodada());
+				for (Time time : times) {
+					Time timeParaComparar = new Time();
+					timeParaComparar.setPontosPorRodada(pontosPorRodada(time, i));
+					if (timeParaComparar.getPontosPorRodada() > vencedorRodada.getPontosPorRodada()) {
+						vencedorRodada = time;
+						vencedorRodada.setPontosPorRodada(timeParaComparar.getPontosPorRodada());
+					}
 				}
-			}
+				for (Time time : times) {
+					if (time.getSlug().equals(vencedorRodada.getSlug())) {
+						if (i == 1) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_1);
+						}
+						if (i == 2) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_2);
+						}
+						if (i == 3) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_3);
+						}
+						if (i == 4) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_4);
+						}
+						if (i == 5) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_5);
+						}
+						if (i == 6) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_6);
+						}
+						if (i == 7) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_7);
+						}
+						if (i == 8) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_8);
+						}
+						if (i == 9) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_9);
+						}
+						if (i == 10) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_10);
+						}
+						if (i == 11) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_11);
+						}
+						if (i == 12) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_12);
+						}
+						if (i == 13) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_13);
+						}
+						if (i == 14) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_14);
+						}
+						if (i == 15) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_15);
+						}
+						if (i == 16) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_16);
+						}
+						if (i == 17) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_17);
+						}
+						if (i == 18) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_18);
+						}
+						if (i == 19) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_19);
+						}
+						if (i == 20) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_20);
+						}
+						if (i == 21) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_21);
+						}
+						if (i == 22) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_22);
+						}
+						if (i == 23) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_23);
+						}
+						if (i == 24) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_24);
+						}
+						if (i == 25) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_25);
+						}
+						if (i == 26) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_26);
+						}
+						if (i == 27) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_27);
+						}
+						if (i == 28) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_28);
+						}
+						if (i == 29) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_29);
+						}
+						if (i == 30) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_30);
+						}
+						if (i == 31) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_31);
+						}
+						if (i == 32) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_32);
+						}
+						if (i == 33) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_33);
+						}
+						if (i == 34) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_34);
+						}
+						if (i == 35) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_35);
+						}
+						if (i == 36) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_36);
+						}
+						if (i == 37) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_37);
+						}
+						if (i == 38) {
+							time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_38);
+						}
 
-			for (Time time : times) {
-				if (time.getSlug().equals(vencedorRodada2.getSlug())) {
-					time.getPremiacoes().add(PremiacoesEnum.VENCEDOR_RODADA_2);
+					}
 				}
 			}
 		}
